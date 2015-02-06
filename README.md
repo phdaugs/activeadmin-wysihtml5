@@ -1,8 +1,5 @@
 # `activeadmin-wysihtml5`
 
-### :warning: Unmaintained :warning:
-
-Sorry, but I no longer work on ActiveAdmin often enough to justify mantaining this gem. Take it as it is. If you are interested to update and maintain the gem, please let me know! :heart:
 
 ## Screenshots
 
@@ -65,6 +62,13 @@ end
 * `:basic`: just h3, h4, h5, p (default);
 * `:barebone`: just p (default);
 * an array with one or more of the following symbols: `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, `:h6`, `:p`
+
+### `:alignments`
+
+* `:all`: all the available text alignments;
+* `:basic`: left, right, center, justify
+* `:barebone`: left, right, center, justify
+* an array with one or more of the following symbols: `:left`, `:right`, `:center`, `:justify`
 
 ### `:height`
 

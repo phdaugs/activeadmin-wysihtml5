@@ -5,13 +5,19 @@ module Formtastic
       COMMANDS_PRESET = {
         barebone: [ :bold, :italic, :link, :source ],
         basic: [ :bold, :italic, :ul, :ol, :link, :image, :source ],
-        all: [ :bold, :italic, :underline, :ul, :ol, :outdent, :indent, :link, :image, :video, :source ]
+        all: [ :bold, :italic, :underline, :ul, :ol, :outdent, :indent, :link, :image, :video, :source]
       }
 
       BLOCKS_PRESET = {
         barebone: [ :p ],
         basic: [ :h3, :h4, :h5, :p ],
         all: [ :h1, :h2, :h3, :h4, :h5, :h6, :p ]
+      }
+      
+      ALIGNS_PRESET = {
+        barebone: [  ],
+        basic: [ :left, :right, :center, :justify ],
+        all: [ :left, :right, :center, :justify  ]
       }
 
       HEIGHT_PRESET = {
@@ -56,7 +62,7 @@ module Formtastic
       def toolbar_commands
         command_groups = [
           [ :bold, :italic, :underline ],
-          [ :ul, :ol, :outdent, :indent ],
+          [ :ul, :ol, :outdent, :indent, :alignLeft, :alignRight, :alignCenter ],
           [ :link ],
           [ :image ],
           [ :video ],
@@ -100,10 +106,47 @@ module Formtastic
           end
         end.compact.join.html_safe
       end
+      
+      def toolbar_alignments
+        command_mapper = {
+          right: 'justifyRight',
+          left: 'justifyLeft',
+          center: 'justifyCenter',
+          justify: 'justifyFull'
+        }
+        alignments = options[:alignments] || input_html_options[:alignments] || :basic
+        if !alignments.is_a? Array
+          alignments = ALIGNS_PRESET[alignments.to_sym]
+        end
+
+        if alignments.any?
+          template.content_tag(:li) do
+            template.content_tag(:div, class: "editor-command blocks-selector") do
+              template.content_tag(:span, I18n.t("wysihtml5.alignments_style")) <<
+              template.content_tag(:ul) do
+                alignments.map do |align|
+                  template.content_tag(:li) do
+                    template.content_tag(
+                      :a,
+                      I18n.t("wysihtml5.alignments.#{align}", default: align.to_s.titleize),
+                      href: "javascript:void(0);",
+                      data: {
+                        wysihtml5_command: command_mapper[align],
+                        wysihtml5_command_value: align
+                    })
+                  end
+                end.join.html_safe
+              end
+            end
+          end
+        else
+          "".html_safe
+        end
+      end
 
       def toolbar
         template.content_tag(:ul, id: "#{input_html_options[:id]}-toolbar", class: "toolbar") do
-          toolbar_blocks << toolbar_commands
+          toolbar_blocks << toolbar_commands << toolbar_alignments
         end << toolbar_dialogs
       end
 

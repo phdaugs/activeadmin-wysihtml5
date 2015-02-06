@@ -22,7 +22,12 @@ en:
         h5: "Heading 5"
         h6: "Heading 6"
         p: "Paragraph"
-
+      alignments_style: "Text Align"
+      alignments:
+        right: "Right"
+        left: "Left"
+        center: "Center"
+        justify: "Justify"
       dialog:
         cancel: "Cancel"
         ok: "OK"

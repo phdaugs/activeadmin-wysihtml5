@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = ActiveAdmin::Wysihtml5::VERSION
   s.authors     = ["Eric Holmes", "Stefano Verna"]
   s.email       = ["eric@ejholmes.net", "s.verna@cantierecreativo.net"]
-  s.homepage    = "https://github.com/cantierecreativo/activeadmin-wysihtml5"
+  s.homepage    = "https://github.com/soupyp00py/activeadmin-wysihtml5"
   s.summary     = "Rich text editor for Active Admin using wysihtml5."
   s.description = s.summary
 
