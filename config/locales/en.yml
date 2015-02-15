@@ -29,6 +29,10 @@ en:
         center: "Center"
         justify: "Justify"
       colors_style: "Text Color"
+      colors:
+          msgreen: "Mindscreen Green"
+          msyellow: "Mindscren Yellow"
+          msgray: "Mindscreen Gray"
       dialog:
         cancel: "Cancel"
         ok: "OK"
