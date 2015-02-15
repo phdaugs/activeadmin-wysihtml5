@@ -98,6 +98,18 @@
   color: aqua;
 }
 
+.wysiwyg-color-ms-green {
+  color: #548b54;
+}
+
+.wysiwyg-color-ms-yellow {
+  color: #faa732;
+}
+    
+.wysiwyg-color-ms-gray {
+  color: #aaaaaa;
+}
+
 .wysiwyg-text-align-right {
   text-align: right;
 }

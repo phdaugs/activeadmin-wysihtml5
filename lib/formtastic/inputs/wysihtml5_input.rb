@@ -23,7 +23,7 @@ module Formtastic
       COLORS_PRESET = {
         barebone: [ :red, :green, :yellow, :blue ],
         basic: [ :red, :green, :yellow, :blue, :gray, :white ],
-        all: [ :black, :silver, :gray, :white, :maroon, :red, :purple, :fuchsia, :green, :lime, :olive, :yellow, :navy, :blue, :teal, :aqua]
+        all: [ :ms_green, :ms_yellow, :ms_gray, :black, :silver, :gray, :white, :maroon, :red, :purple, :fuchsia, :green, :lime, :olive, :yellow, :navy, :blue, :teal, :aqua]
       }
       
 
