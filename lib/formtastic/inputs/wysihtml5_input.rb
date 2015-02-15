@@ -19,6 +19,13 @@ module Formtastic
         basic: [ :left, :right, :center, :justify ],
         all: [ :left, :right, :center, :justify  ]
       }
+      
+      COLORS_PRESET = {
+        barebone: [ :red, :green, :yellow, :blue ],
+        basic: [ :red, :green, :yellow, :blue, :gray, :white ],
+        all: [ :black, :silver, :gray, :white, :maroon, :red, :purple, :fuchsia, :green, :lime, :olive, :yellow, :navy, :blue, :teal, :aqua]
+      }
+      
 
       HEIGHT_PRESET = {
         tiny: 70,
@@ -143,10 +150,41 @@ module Formtastic
           "".html_safe
         end
       end
+      
+      def toolbar_colors
+        colors = options[:colors] || input_html_options[:colors] || :basic
+        if !colors.is_a? Array
+          colors = COLORS_PRESET[colors.to_sym]
+        end
+
+        if colors.any?
+          template.content_tag(:li) do
+            template.content_tag(:div, class: "editor-command blocks-selector") do
+              template.content_tag(:span, I18n.t("wysihtml5.colors_style")) <<
+              template.content_tag(:ul) do
+                colors.map do |color|
+                  template.content_tag(:li) do
+                    template.content_tag(
+                      :a,
+                      I18n.t("wysihtml5.colors.#{color}", default: color.to_s.titleize),
+                      href: "javascript:void(0);",
+                      data: {
+                        wysihtml5_command: 'foreColor',
+                        wysihtml5_command_value: color
+                    })
+                  end
+                end.join.html_safe
+              end
+            end
+          end
+        else
+          "".html_safe
+        end
+      end
 
       def toolbar
         template.content_tag(:ul, id: "#{input_html_options[:id]}-toolbar", class: "toolbar") do
-          toolbar_blocks << toolbar_commands << toolbar_alignments
+          toolbar_blocks << toolbar_commands << toolbar_alignments << toolbar_colors
         end << toolbar_dialogs
       end
 

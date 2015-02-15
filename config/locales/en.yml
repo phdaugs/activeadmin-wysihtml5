@@ -28,6 +28,7 @@ en:
         left: "Left"
         center: "Center"
         justify: "Justify"
+      colors_style: "Text Color"
       dialog:
         cancel: "Cancel"
         ok: "OK"

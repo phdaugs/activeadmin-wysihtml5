@@ -70,6 +70,13 @@ end
 * `:barebone`: left, right, center, justify
 * an array with one or more of the following symbols: `:left`, `:right`, `:center`, `:justify`
 
+### `:colors`
+
+* `:all`: all the available text alignments;
+* `:basic`: red, green, yellow, blue, gray, white
+* `:barebone`: red, green, yellow, blue
+* an array with one or more of the following symbols: `:black`, `:silver`, `:gray`, `:white`, `:maroon`, `:red`, `:purple`, `:fuchsia`, `:green`, `:lime`, `:olive`, `:yellow`, `:navy`, `:blue`, `:teal`, `:aqua`
+
 ### `:height`
 
 * `:tiny`: 70px;
